@@ -17,5 +17,9 @@ public class Output {
         return "The multiplication of " + firstNumber + " and " + secondNumber + " is " + totalMultiplication;
     }
 
+    public String getDivisionDetails(double firstNumber, double secondNumber) {
+        return "";
+    }
+
     
 }
