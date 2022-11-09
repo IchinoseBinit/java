@@ -24,6 +24,7 @@ public class Main {
         players.add(ronaldo);
 
         Team realMadrid = new Team("Real Madrid", "1890", players);
+        
         realMadrid.display();
         players.clear();
         players.add(messi);

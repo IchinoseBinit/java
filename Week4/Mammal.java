@@ -1,5 +1,6 @@
 package Week4;
 public class Mammal {
+    // Encapsulation
     private String name;
     private int age;
     private double lifespan;

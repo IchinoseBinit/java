@@ -1,12 +1,19 @@
 package Week4;
-public class Dog extends Mammal{
+
+public class Dog extends Mammal {
 
     private String breed;
 
     public Dog(String name, int age, double lifespan, String color, String breed) {
         super(name, age, lifespan, color);
-        this.breed = breed;
+        this.breed= breed;
     }
+
+    // public Dog(String name, int age, double lifespan, String color, String breed)
+    // {
+    // super(name, age, lifespan, color);
+    // this.breed = breed;
+    // }
 
     public String getBreed() {
         return breed;
@@ -16,11 +23,10 @@ public class Dog extends Mammal{
         this.breed = breed;
     }
 
+    // overriding
     public void display() {
         super.display();
-        System.out.println("The breed is "+ breed);
+        System.out.println("The breed is " + breed);
     }
 
-
-    
 }
