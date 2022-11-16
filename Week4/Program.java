@@ -15,7 +15,11 @@ public class Program {
         humanSkill.add("Patience");
 
         Human human = new Human("Manxe", 22, 80, "Black", "Pokhara", humanSkill);
-        human.display();
+        // human.display();
+        Human kanxo = new Human("Manxe", 22, 80, "Black", "Pokhara", humanSkill);
+        // human.display();
+        System.out.println(human.hashCode());
+        System.out.println(kanxo.hashCode());
 
         Hello hello =  new Hello();
         // hello.display();

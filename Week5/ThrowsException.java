@@ -4,14 +4,24 @@ public class ThrowsException {
         try {
             display();
         } catch (Exception ex) {
-            System.out.println("Exception caught");
+            System.out.println(ex.toString());
         }
     }
 
     // public static void display() {
     public static void display() throws Exception {
-        throw (new Exception());
+        throw new Exception("Hello world");
         // System.out.println("null");
     }
+
+    // psvm -> getInput();
+    // with try catch
+
+    // getInput method with try catch
+    // int returnType
+    // scanner to take number
+    // input name
+    // return num
+    // catch throw Exception()
     
 }

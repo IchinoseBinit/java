@@ -9,7 +9,7 @@ public class Developer {
         this.interviewerName = interviewerName;
         this.developerName = "";
         this.workingHours = workingHours;
-    }
+}
 
     public String getPlatform() {
         return platform;
