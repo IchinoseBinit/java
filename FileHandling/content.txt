@@ -1,0 +1,13 @@
+Binit Koirala, 21, Dharan
+Prabesh Gutpa, 20, Pepsicola
+Rajesh Shrestha, 24, Manthali
+
+scanner.split(",")
+
+Person name, age, address (constructor)
+display("Tge name is name)
+
+toString name + ", "+age
+
+write(person.toString()\n), Sunil is an irregular student
+, Sunil is an irregular student
