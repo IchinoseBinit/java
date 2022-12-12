@@ -1,92 +1,82 @@
 package FileHandling;
 
 import java.io.BufferedReader;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
-import java.nio.Buffer;
+import java.util.ArrayList;
 import java.util.Iterator;
 
 public class Program {
 
-    public static void main(String[] args) {
-        try {
-            String filePath =
+    static final String FILEPATH =
             "C:\\Users\\binit\\OneDrive\\Desktop\\java\\FileHandling\\content.txt";
 
+    public static void main(String[] args) {
+        try {           
 
-            // FileReader fileREader = new FileReader(filePath);
+            FileReader fileReader = new FileReader(FILEPATH);
+            // classname    objectname  = keyword constructor (parametrized)
 
-            // BufferedReader bReader = new BufferedReader(fileREader);
+            BufferedReader bReader = new BufferedReader(fileReader);
+            // classname    objectname  =    keyword    constructor
 
             // String line = bReader.readLine();
-
-            // Iterator<String> lines = bReader.lines().iterator();
-            // // lines.hasNext()
-
+            
             // if (line != null) {
             //     System.out.println(line);
             // } else {
             //     System.out.println("The file is empty");
             // }
 
-            // while(lines.hasNext()) {
-            //     System.out.println(lines.next());
-            // } 
-            // bReader.close();
-            // fileREader.close();
+            // Iterator
 
-            // FileOutputStream output = new FileOutputStream(filePath);
+            // POJO
+            // Plain Old Java Objects
 
-            // if ("binit".equals( "binit")) {
-            // System.out.println("true");
-            // }
+            ArrayList<Book> books = new ArrayList<>();
 
-            // int abc = 123453;
+            
+            Iterator<String> lines = bReader.lines().iterator();
+            // lines.
+            while(lines.hasNext()) {
+                String[] details = lines.next().split(",");
+                int id = Integer.parseInt(details[0].trim());
+                int quantity = Integer.parseInt(details[3].trim());
+                //       Deserialization
+                Book book = new Book(id, details[1].trim(), details[2].trim(), quantity);
+                books.add(book);
+            } 
+            bReader.close();
+            fileReader.close();
 
-            // output.write( (byte) abc);
-            // output.close();
-            // System.out.println("File written successfully");
+            for(Book book: books) {
+                book.display();
+            }
 
-            // FileInputStream input = new FileInputStream(filePath);
+            // 
 
-            // int data = input.read();
-            // System.out.println((char) data);
-
-            // int b = 12;
-            // System.out.println((char) b);
-            // // Character Stream
-            // FileReader fileReader = new FileReader(filePath);
-            FileWriter fileWriter = new FileWriter(filePath, true);
-
-            // BufferedReader buffer = new BufferedReader(fileReader);
-            // String line = buffer.readLine();
-
-            // if (line != null) {
-            // System.out.println(line);
-            // String[] array = line.split(",");
-            // for (String s : array) {
-
-            // System.out.println (s);
-            // }
-            // } else {
-            // System.out.println("The file is empty");
-            // }
-
-            // fileWriter.write(line);
-            fileWriter.write("\n, Sunil is an irregular student");
-            System.out.println(":::---> Successfully written");
-            fileWriter.close();
-            // fileReader.close();
-            // buffer.close();
-
-            // -------------------------------
+            writeToFile(books);
+            
+            
 
 
         } catch (Exception ex) {
             System.out.println(ex.toString());
             System.out.println("Cannot open file");
+        }
+    }
+
+    public static void writeToFile(ArrayList<Book> books) {
+        try {
+        // Serialization
+        FileWriter fileWriter = new FileWriter(FILEPATH);
+        for (Book book : books) {
+            fileWriter.write(book.toString());
+        }
+        System.out.println(":::---> Successfully written");
+        fileWriter.close();
+        } catch (Exception ex) {
+            System.out.println(ex.toString());
         }
     }
 
