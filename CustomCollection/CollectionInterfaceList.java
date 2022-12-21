@@ -5,7 +5,10 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Stack;
+import java.util.TreeSet;
 import java.util.Collections;
+import java.util.HashMap;
+import java.util.HashSet;
 
 public class CollectionInterfaceList {
     // List
@@ -45,7 +48,21 @@ public class CollectionInterfaceList {
         // integers.asSet().toList()
 
 
-        System.out.println(integers);
+        // System.out.println(integers);
+
+        // HashMap map = new HashMap<>();
+        // map.put("name", "Binit Koirala");
+        // map.put("age", 21);
+        // System.out.println(map);
+
+        TreeSet<String> treeSet = new TreeSet();
+        treeSet.add("India");
+        treeSet.add("South Africa");
+        treeSet.add("India");
+        treeSet.add("Australia");
+        treeSet.add("England");
+
+        System.out.println(treeSet);
     }
 
     public static void getListData(List<Integer> integers) {
