@@ -5,77 +5,163 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.*;
-import java.awt.FlowLayout;
-import java.awt.GridLayout;
 import java.awt.*;
 import java.awt.event.*;
 
 public class FlowLayoutExample {
 
+    private static JLabel lblHeading;
+    private static JLabel lblName;
+    private static JLabel lblAge;
+    private static JLabel lblAddress;
+    private static JLabel lblPhoneNumber;
+    private static JLabel lblCheckBox;
+    private static JLabel lblGender;
+    private static JTextField txtBoxName;
+    private static JTextField txtBoxAge;
+    private static JTextField txtBoxAddress;
+    private static JTextField txtBoxPhoneNumber;
+    private static JCheckBox chkBoxReading;
+    private static JCheckBox chkBoxWriting;
+    private static JCheckBox chkBoxSports;
+    private static JRadioButton rBtnMale;
+    private static JRadioButton rBtnFemale;
+    private static JButton btnSubmit;
+    private static JButton btnClear;
+
     public static void main(String[] args) {
         JFrame frame = new JFrame("VS Intl College");
         JPanel panel = new JPanel();
 
-        JLabel lblForButton = new JLabel("Button");
-        JLabel lblForClear = new JLabel("Clear");
-        JLabel lblForButtonOne = new JLabel("Button One");
-        JLabel lblForButtonTwo = new JLabel("Button Two");
-        JLabel lblName = new JLabel("Name");
+        panel.setLayout(null);
 
-        JButton button =  new JButton("Submit");
+        lblHeading = new JLabel("Welcome to Student Management System");
+        lblHeading.setBounds(120, 20, 460, 20);
+        lblHeading.setFont(new Font("Serif", Font.BOLD, 20));
+
+        lblName = new JLabel();
+        lblName.setText("Name");
+        lblName.setBounds(20, 50, 100, 20);
+
+        lblAge = new JLabel("Age");
+        lblAge.setBounds(320, 50, 100, 20);
+
+        lblAddress = new JLabel("Address");
+        lblAddress.setBounds(20, 120, 100, 20);
+
+        lblPhoneNumber = new JLabel("Phone Number");
+        lblPhoneNumber.setBounds(320, 120, 100, 20);
+
+
+        lblCheckBox = new JLabel("Interests: ");
+        lblCheckBox.setBounds(20, 180, 100, 10);
+
+        lblCheckBox = new JLabel("Gender: ");
+        lblCheckBox.setBounds(20, 230, 100, 20);
+
+        // Creating TextBoxes
+        txtBoxName = new JTextField();
+        txtBoxName.setBounds(20, 80, 200, 20);
+
+        txtBoxAge = new JTextField();
+        txtBoxAge.setBounds(320, 80, 200, 20);
+
+        txtBoxAddress = new JTextField();
+        txtBoxAddress.setBounds(20, 150, 200, 20);
+
+        txtBoxPhoneNumber = new JTextField();
+        txtBoxPhoneNumber.setBounds(320, 150, 200, 20);
+
+        chkBoxReading = new JCheckBox("Reading", true);
+        chkBoxReading.setBounds(20, 200, 100, 20);
         
+        chkBoxWriting = new JCheckBox("Writing");
+        chkBoxWriting.setBounds(140, 200, 100, 20);
 
+        chkBoxSports = new JCheckBox("Sports");
+        chkBoxSports.setBounds(260, 200, 100, 20);
 
-        JButton clearButton =  new JButton("Clear");
-        JButton buttonOne =  new JButton("Button One");
-        
-        JButton buttonTwo =  new JButton("Button Two");
+        rBtnMale = new JRadioButton("Male");
+        rBtnMale.setBounds(20, 250, 100, 20);
 
-        JTextField txtFieldName = new JTextField();
+        rBtnFemale = new JRadioButton("Female");
+        rBtnFemale.setBounds(320, 250, 100, 20);
 
-        button.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent ae) {
-                System.out.println(txtFieldName.getText());
-            }
-        });
-        clearButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent ae) {
-                txtFieldName.setText("");
-            }
-        });
-        buttonOne.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent ae) {
-                txtFieldName.setText("Manish");
-            }
-        });
-        buttonTwo.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent ae) {
-                txtFieldName.setText("Binit");
-            }
-        });
+        // Adding buttons
+        btnSubmit = new JButton("Submit");
+        btnSubmit.setBounds(130, 280, 100, 20);
+        btnSubmit.setBackground(Color.BLUE);
+        btnSubmit.setForeground(Color.white);
 
-        panel.setLayout(new GridLayout(5, 2));
-        
-        panel.add(lblForButton);
-        panel.add(lblForClear);
-        panel.add(button);
-        panel.add(clearButton);
-        
+        btnClear = new JButton("Clear");
+        btnClear.setBounds(330, 280, 100, 20);
+
+        // Adding components
+        panel.add(lblHeading);
         panel.add(lblName);
-        panel.add(txtFieldName);
+        panel.add(lblAge);
+        panel.add(lblAddress);
+        panel.add(lblPhoneNumber);
+        panel.add(lblCheckBox);
 
-        panel.add(lblForButtonOne);
-        panel.add(lblForButtonTwo);
-        panel.add(buttonOne);
-        panel.add(buttonTwo);
+        panel.add(txtBoxName);
+        panel.add(txtBoxAge);
+        panel.add(txtBoxAddress);
+        panel.add(txtBoxPhoneNumber);
 
+        panel.add(chkBoxReading);
+        panel.add(chkBoxSports);
+        panel.add(chkBoxWriting);
 
+        panel.add(rBtnMale);
+        panel.add(rBtnFemale);
+
+        btnSubmit.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                String name = txtBoxName.getText();
+                int age = 0;
+                try {
+                    age = Integer.parseInt(txtBoxAge.getText());
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(frame, "Please enter a valid age", "Error", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+
+                chkBoxReading.isSelected();
+                String address = txtBoxAddress.getText();
+                String phoneNumber = txtBoxPhoneNumber.getText();
+
+                Person person = new Person(age, name, address, phoneNumber);
+                System.out.println(person.toString());
+                clearTextField();
+
+                JOptionPane.showMessageDialog(frame, person.toString(), "Person Details", JOptionPane.INFORMATION_MESSAGE);
+
+            }
+        });
+
+        btnClear.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                clearTextField();
+            }
+        });
+
+        // adding buttons
+        panel.add(btnSubmit);
+        panel.add(btnClear);
 
         frame.add(panel);
         frame.pack();
-        // frame.setResizable(false);
-        // frame.setSize(600, 400);
+        frame.setResizable(false);
+        frame.setSize(600, 400);
         frame.setVisible(true);
+    }
+
+    public static void clearTextField() {
+        txtBoxName.setText("");
+        txtBoxAge.setText("");
+        txtBoxAddress.setText("");
+        txtBoxPhoneNumber.setText("");
     }
 
 }
