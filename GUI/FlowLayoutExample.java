@@ -26,6 +26,8 @@ public class FlowLayoutExample {
     private static JCheckBox chkBoxSports;
     private static JRadioButton rBtnMale;
     private static JRadioButton rBtnFemale;
+    private static ButtonGroup btnGroup;
+    private static JComboBox<String> cmboSection;
     private static JButton btnSubmit;
     private static JButton btnClear;
 
@@ -56,8 +58,8 @@ public class FlowLayoutExample {
         lblCheckBox = new JLabel("Interests: ");
         lblCheckBox.setBounds(20, 180, 100, 10);
 
-        lblCheckBox = new JLabel("Gender: ");
-        lblCheckBox.setBounds(20, 230, 100, 20);
+        lblGender = new JLabel("Gender: ");
+        lblGender.setBounds(20, 230, 100, 20);
 
         // Creating TextBoxes
         txtBoxName = new JTextField();
@@ -81,11 +83,21 @@ public class FlowLayoutExample {
         chkBoxSports = new JCheckBox("Sports");
         chkBoxSports.setBounds(260, 200, 100, 20);
 
-        rBtnMale = new JRadioButton("Male");
+        rBtnMale = new JRadioButton("Male", true);
         rBtnMale.setBounds(20, 250, 100, 20);
 
         rBtnFemale = new JRadioButton("Female");
-        rBtnFemale.setBounds(320, 250, 100, 20);
+        rBtnFemale.setBounds(140, 250, 100, 20);
+
+        btnGroup = new ButtonGroup();
+        btnGroup.add(rBtnMale);
+        btnGroup.add(rBtnFemale);
+
+        cmboSection = new JComboBox<String>();
+        cmboSection.addItem("Section 1");
+        cmboSection.addItem("Section 2");
+        cmboSection.addItem("Section 3");
+        cmboSection.setBounds(320, 250, 100, 20);
 
         // Adding buttons
         btnSubmit = new JButton("Submit");
@@ -103,6 +115,7 @@ public class FlowLayoutExample {
         panel.add(lblAddress);
         panel.add(lblPhoneNumber);
         panel.add(lblCheckBox);
+        panel.add(lblGender);
 
         panel.add(txtBoxName);
         panel.add(txtBoxAge);
@@ -116,6 +129,8 @@ public class FlowLayoutExample {
         panel.add(rBtnMale);
         panel.add(rBtnFemale);
 
+        panel.add(cmboSection);
+
         btnSubmit.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 String name = txtBoxName.getText();
@@ -128,6 +143,7 @@ public class FlowLayoutExample {
                 }
 
                 chkBoxReading.isSelected();
+                cmboSection.getSelectedItem();
                 String address = txtBoxAddress.getText();
                 String phoneNumber = txtBoxPhoneNumber.getText();
 
